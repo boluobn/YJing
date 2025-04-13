@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忋境空间 (Memspace) - 您的 visionOS 空间媒体管家</title>
+    <style>
+        :root {
+            --primary-color: #007AFF; /* Apple Blue */
+            --secondary-color: #f2f2f7; /* Light Gray */
+            --text-color: #1d1d1f; /* Near Black */
+            --light-text-color: #6e6e73; /* Gray */
+            --background-color: #ffffff; /* White */
+            --border-radius: 12px;
+            --section-padding: 60px 20px;
+            --container-width: 960px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            /* background-color: var(--secondary-color); */ /* Comment out or remove original background */
+            border-bottom: 1px solid #e5e5e5;
+            background-image: url('images/bg/bg.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative; /* Add position relative for potential overlay */
+        }
+        .hero::before { /* Optional: Add a semi-transparent overlay for better text readability */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background-color: rgba(242, 242, 247, 0.6); */ /* Use secondary color with alpha */
+            background-color: rgba(0, 0, 0, 0.4); /* Darker overlay */
+            z-index: 1;
+        }
+        .hero .container { /* Ensure content is above the overlay */
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #ffffff; /* Change text color to white */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Add text shadow */
+            /* Consider adding text shadow for better contrast if overlay is not used */
+            /* text-shadow: 0 1px 3px rgba(0,0,0,0.4); */
+        }
+        .hero p {
+            font-size: 1.2em;
+            /* color: var(--light-text-color); */ /* Adjust text color for contrast */
+            /* color: var(--text-color); */ /* Or a darker color */
+            color: #ffffff; /* Change text color to white */
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Add text shadow */
+             /* text-shadow: 0 1px 2px rgba(0,0,0,0.3); */
+        }
+        .hero img {
+            max-width: 80%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin: 5px; /* Add margin for spacing */
+        }
+        .cta-button:hover {
+            background-color: #005bb5;
+        }
+        .cta-button.secondary { /* Style for the new button */
+            background-color: rgba(255, 255, 255, 0.8);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        .cta-button.secondary:hover {
+            background-color: white;
+        }
+        .section {
+            padding: var(--section-padding);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .feature-item {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        .feature-item img { /* Placeholder for icons or feature images */
+            max-width: 60px;
+            height: auto;
+            margin-bottom: 20px;
+            /* filter: invert(39%) sepia(96%) saturate(2818%) hue-rotate(196deg) brightness(104%) contrast(104%); Apply primary color to icons */
+        }
+         .feature-item h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .feature-item p {
+            color: var(--light-text-color);
+            font-size: 0.95em;
+        }
+
+        .detailed-feature {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .detailed-feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .detailed-feature-text {
+            flex: 1;
+        }
+        .detailed-feature-text h3 {
+             font-size: 1.8em;
+             margin-bottom: 15px;
+             font-weight: 600;
+        }
+        .detailed-feature-text p, .detailed-feature-text ul {
+            color: var(--light-text-color);
+            font-size: 1em;
+        }
+         .detailed-feature-text ul {
+            padding-left: 20px;
+            list-style: disc;
+         }
+        .detailed-feature-image {
+            flex: 1;
+            text-align: center;
+        }
+        .detailed-feature-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .gallery {
+            background-color: var(--secondary-color);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         .gallery-item img:hover {
+             transform: scale(1.05);
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+         }
+
+        footer {
+            background-color: var(--text-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.1em; }
+            .section-title { font-size: 2em; }
+            .detailed-feature, .detailed-feature:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+             .detailed-feature-image { margin-top: 30px; }
+            header .container { flex-direction: column; }
+            nav ul { margin-top: 10px; }
+            nav ul li { margin: 0 10px; }
+        }
+        @media (max-width: 480px) {
+             .hero h1 { font-size: 2em; }
+             .hero p { font-size: 1em; }
+             .section-title { font-size: 1.8em; }
+             nav ul { flex-wrap: wrap; justify-content: center; }
+             nav ul li { margin: 5px 10px; }
+        }
+
+        /* Video Modal Styles */
+        .video-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            align-items: center; /* Vertical center */
+            justify-content: center; /* Horizontal center */
+        }
+        .video-modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 800px; /* Limit maximum width */
+            background-color: #000; /* Black background for video area */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+         .video-modal-content video {
+            display: block; /* Remove extra space below video */
+            width: 100%;
+            height: auto;
+         }
+        .close-modal-btn {
+            position: absolute;
+            top: 10px; /* Position inside top */
+            right: 10px; /* Position inside right */
+            color: #ffffff; /* White color for visibility */
+            font-size: 24px; /* Adjusted size */
+            font-weight: bold;
+            transition: opacity 0.3s ease; /* Transition for opacity */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            border: none;
+            line-height: 1; /* Adjust line height */
+            padding: 5px 10px; /* Add padding */
+            border-radius: 50%; /* Make it round */
+            opacity: 0; /* Hidden by default */
+            z-index: 10; /* Ensure it's above the video element if needed */
+        }
+        .close-modal-btn:hover,
+        .close-modal-btn:focus {
+            background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+            text-decoration: none;
+        }
+        /* Show close button when hovering over the modal content area */
+        .video-modal-content:hover .close-modal-btn {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo/icon.svg" alt="忋境空间 Logo" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+                <span style="vertical-align: middle;">忋境空间</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">核心功能</a></li>
+                    <li><a href="#details">功能详情</a></li>
+                    <li><a href="#gallery">应用截图</a></li>
+                    <li><a href="#download">立即下载</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>忋境空间 (Memspace)</h1>
+            <p>在 visionOS 上探索与管理个人照片与视频的核心应用。以全新的空间维度重温您的每一个动人瞬间。</p>
+            <a href="https://apps.apple.com/cn/app/spatial-media-browser/id6743648639" class="cta-button">前往 App Store</a>
+            <a href="#" id="watch-video-btn" class="cta-button secondary">观看视频</a>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <!-- **** 可选：替换为功能图标 **** -->
+                    <!-- <img src="images/zh/icon-photowall.png" alt="照片墙图标"> -->
+                    <h3>沉浸式照片墙</h3>
+                    <p>影像环绕四周，手势自然交互，分组浏览，随心旋转，带来前所未有的视觉盛宴。</p>
+                </div>
+                <div class="feature-item">
+                     <!-- <img src="images/zh/icon-local.png" alt="本地管理图标"> -->
+                    <h3>本地媒体管理</h3>
+                    <p>所有空间媒体文件安全存储于本地设备，支持离线访问与管理，数据尽在掌握。</p>
+                </div>
+                <div class="feature-item">
+                     <!-- <img src="images/zh/icon-import.png" alt="导入图标"> -->
+                    <h3>便捷导入</h3>
+                    <p>支持从系统"照片"应用快速导入空间照片与视频，轻松同步您的珍贵回忆。</p>
+                </div>
+                 <div class="feature-item">
+                     <!-- <img src="images/zh/icon-folders.png" alt="目录图标"> -->
+                    <h3>多级目录管理</h3>
+                    <p>自由创建、命名、移动多级目录，高效分类和查找您的照片与视频内容。</p>
+                </div>
+                <div class="feature-item">
+                    <!-- <img src="images/zh/icon-favorites.png" alt="收藏图标"> -->
+                    <h3>瀑布流收藏夹</h3>
+                    <p>一键收藏喜爱内容，以沉浸式瀑布流展示，缩略图大小可调，浏览更便捷。</p>
+                </div>
+                <div class="feature-item">
+                    <!-- <img src="images/zh/icon-privacy.png" alt="隐私图标"> -->
+                    <h3>隐私安全守护</h3>
+                    <p>支持设置访问密码并启用 Optic ID，全面守护您的个人隐私，让美好记忆安心存放。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="section">
+         <div class="container">
+            <h2 class="section-title">功能详情</h2>
+
+            <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>照片墙模式：空间交互新体验</h3>
+                    <ul>
+                        <li>点击工具栏红色按钮，即刻进入沉浸式照片墙空间。</li>
+                        <li>支持照片和视频展示，单击缩放，双击播放/暂停视频。</li>
+                        <li>可按组浏览，设置每组数量及随机显示，切换自如。</li>
+                        <li>照片墙与天空球支持手动拖动旋转或自动旋转。</li>
+                        <li>旋转时可点击放大照片，并可配置放大时是否停止旋转。</li>
+                    </ul>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <!-- **** 替换为照片墙交互截图 **** -->
+                      <!-- img src="images/zh/placeholder-photowall-interaction.jpg" alt="照片墙交互" -->
+                      <video controls loop playsinline width="100%" height="auto" style="border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);">
+                          <source src="videos/zh/memspace.mp4" type="video/mp4">
+                          您的浏览器不支持 video 标签。
+                      </video>
+                 </div>
+            </div>
+
+             <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>强大的媒体文件管理</h3>
+                     <ul>
+                        <li><strong>目录管理：</strong> 创建、重命名、复制、移动与删除多级目录。</li>
+                        <li><strong>导入功能：</strong> 从 Photos 应用快速导入空间媒体。</li>
+                        <li><strong>文件操作：</strong> 支持对文件和目录的移动、复制、重命名及删除。</li>
+                    </ul>
+                    <p>让您的媒体库始终井然有序，查找内容得心应手。</p>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <!-- **** 替换为文件管理或目录结构截图 **** -->
+                      <img src="images/zh/screenshot2.png" alt="文件管理界面">
+                 </div>
+            </div>
+
+            <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>收藏管理与预览</h3>
+                    <ul>
+                        <li>一键收藏喜爱的照片与视频，集中管理。</li>
+                        <li>收藏夹采用瀑布流布局，视觉效果佳，支持拖动调整缩略图大小。</li>
+                        <li>兼容 Photos 应用内所有空间媒体格式。</li>
+                        <li>预览时可通过箭头键连续切换上一个/下一个文件，操作流畅。</li>
+                    </ul>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <!-- **** 替换为收藏夹或预览截图 **** -->
+                      <img src="images/zh/screenshot3.png" alt="收藏夹与预览">
+                 </div>
+            </div>
+
+         </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">应用截图</h2>
+            <p style="text-align: center; color: var(--light-text-color); margin-top:-30px; margin-bottom: 40px;">直观感受"忋境空间"带来的沉浸式体验</p>
+            <div class="gallery-grid">
+                <!-- **** 在下方添加更多图片，并替换 src 路径 **** -->
+                <div class="gallery-item"><img src="images/zh/screenshot1.jpg" alt="忋境空间截图 1"></div>
+                <div class="gallery-item"><img src="images/zh/screenshot6.jpg" alt="忋境空间截图 2"></div>
+                <div class="gallery-item"><img src="images/zh/screenshot2.png" alt="忋境空间截图 2"></div>
+                <div class="gallery-item"><img src="images/zh/screenshot3.png" alt="忋境空间截图 3"></div>
+                <div class="gallery-item"><img src="images/zh/screenshot4.png" alt="忋境空间截图 4"></div>
+                <div class="gallery-item"><img src="images/zh/screenshot5.png" alt="忋境空间截图 5"></div>
+                 <!-- ... 添加更多 ... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section" style="text-align: center;">
+         <div class="container">
+              <h2 class="section-title">立即体验</h2>
+              <p style="color: var(--light-text-color); margin-bottom: 30px;">即刻下载"忋境空间"，在 visionOS 上开启全新的空间媒体管理之旅。</p>
+              <!-- **** 替换为实际的 App Store 链接 **** -->
+              <a href="https://apps.apple.com/cn/app/spatial-media-browser/id6743648639" class="cta-button">前往 App Store 下载</a>
+              <br><br>
+              <!-- **** 可选：放置 App Store 图标 **** -->
+              <!-- img src="images/logo/icon.svg" alt="Download on the App Store" style="height: 50px; margin-top: 20px;" -->
+         </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <!-- **** 替换为您的版权信息 **** -->
+            <p>&copy; 2024 boluobn. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal Structure -->
+    <div id="video-modal" class="video-modal">
+      <div class="video-modal-content">
+        <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+        <video id="modal-video" controls playsinline>
+          <source src="videos/zh/memspace.mp4" type="video/mp4">
+          您的浏览器不支持 video 标签。
+        </video>
+      </div>
+    </div>
+
+    <script>
+        // Video Modal Logic
+        const modal = document.getElementById("video-modal");
+        const btn = document.getElementById("watch-video-btn");
+        const span = document.getElementById("close-modal-btn");
+        const video = document.getElementById("modal-video");
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function(event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          modal.style.display = "flex"; // Use flex to center content
+          video.play(); // Autoplay video
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+          video.pause();
+          video.currentTime = 0; // Reset video
+        }
+
+        // When the user clicks anywhere outside of the modal content, close it
+        modal.onclick = function(event) {
+          // Check if the click is directly on the modal backdrop (not the content)
+          if (event.target == modal) {
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0; // Reset video
+          }
+        }
+    </script>
+
+</body>
+</html>
