@@ -64,7 +64,7 @@ nav ul li a:hover {
     padding: 100px 20px;
     /* background-color: var(--secondary-color); */ /* Comment out or remove original background */
     border-bottom: 1px solid #e5e5e5;
-    background-image: url('images/bg/bg.png');
+    background-image: url('images/bg/bg.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
