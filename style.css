@@ -1,0 +1,384 @@
+:root {
+    --primary-color: #007AFF; /* Apple Blue */
+    --secondary-color: #f2f2f7; /* Light Gray */
+    --text-color: #1d1d1f; /* Near Black */
+    --light-text-color: #6e6e73; /* Gray */
+    --background-color: #ffffff; /* White */
+    --border-radius: 12px;
+    --section-padding: 60px 20px;
+    --container-width: 960px;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul li {
+    margin-left: 25px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    /* background-color: var(--secondary-color); */ /* Comment out or remove original background */
+    border-bottom: 1px solid #e5e5e5;
+    background-image: url('images/bg/bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative; /* Add position relative for potential overlay */
+}
+.hero::before { /* Optional: Add a semi-transparent overlay for better text readability */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: rgba(242, 242, 247, 0.6); */ /* Use secondary color with alpha */
+    background-color: rgba(0, 0, 0, 0.4); /* Darker overlay */
+    z-index: 1;
+}
+.hero .container { /* Ensure content is above the overlay */
+    position: relative;
+    z-index: 2;
+}
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ffffff; /* Change text color to white */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Add text shadow */
+    /* Consider adding text shadow for better contrast if overlay is not used */
+    /* text-shadow: 0 1px 3px rgba(0,0,0,0.4); */
+}
+.hero p {
+    font-size: 1.2em;
+    /* color: var(--light-text-color); */ /* Adjust text color for contrast */
+    /* color: var(--text-color); */ /* Or a darker color */
+    color: #ffffff; /* Change text color to white */
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Add text shadow */
+     /* text-shadow: 0 1px 2px rgba(0,0,0,0.3); */
+}
+.hero img {
+    max-width: 80%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin: 5px; /* Add margin for spacing */
+}
+.cta-button:hover {
+    background-color: #005bb5;
+}
+.cta-button.secondary { /* Style for the new button */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.cta-button.secondary:hover {
+    background-color: white;
+}
+.section {
+    padding: var(--section-padding);
+}
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+.feature-item {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+.feature-item img { /* Placeholder for icons or feature images */
+    height: 60px;
+    width: auto;
+}
+ .feature-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.feature-item p {
+    color: var(--light-text-color);
+    font-size: 0.95em;
+}
+
+.detailed-feature {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+.detailed-feature:nth-child(even) {
+    flex-direction: row-reverse;
+}
+.detailed-feature-text {
+    flex: 1;
+}
+.detailed-feature-text h3 {
+     font-size: 1.8em;
+     margin-bottom: 15px;
+     font-weight: 600;
+}
+.detailed-feature-text p, .detailed-feature-text ul {
+    color: var(--light-text-color);
+    font-size: 1em;
+}
+ .detailed-feature-text ul {
+    padding-left: 20px;
+    list-style: disc;
+ }
+.detailed-feature-image {
+    flex: 1;
+    text-align: center;
+}
+.detailed-feature-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.gallery {
+    background-color: var(--secondary-color);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ .gallery-item img:hover {
+     transform: scale(1.05);
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+ }
+
+footer {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5em; }
+    .hero p { font-size: 1.1em; }
+    .section-title { font-size: 2em; }
+    .detailed-feature, .detailed-feature:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+    }
+     .detailed-feature-image { margin-top: 30px; }
+    header .container { flex-direction: column; }
+    nav ul { margin-top: 10px; }
+    nav ul li { margin: 0 10px; }
+}
+@media (max-width: 480px) {
+     .hero h1 { font-size: 2em; }
+     .hero p { font-size: 1em; }
+     .section-title { font-size: 1.8em; }
+     nav ul { flex-wrap: wrap; justify-content: center; }
+     nav ul li { margin: 5px 10px; }
+}
+
+/* Video Modal Styles */
+.video-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+}
+.video-modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 800px; /* Limit maximum width */
+    background-color: #000; /* Black background for video area */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+ .video-modal-content video {
+    display: block; /* Remove extra space below video */
+    width: 100%;
+    height: auto;
+ }
+.close-modal-btn {
+    position: absolute;
+    top: 10px; /* Position inside top */
+    right: 10px; /* Position inside right */
+    color: #ffffff; /* White color for visibility */
+    font-size: 24px; /* Adjusted size */
+    font-weight: bold;
+    transition: opacity 0.3s ease; /* Transition for opacity */
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border: none;
+    line-height: 1; /* Adjust line height */
+    padding: 5px 10px; /* Add padding */
+    border-radius: 50%; /* Make it round */
+    opacity: 0; /* Hidden by default */
+    z-index: 10; /* Ensure it's above the video element if needed */
+}
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+    text-decoration: none;
+}
+/* Show close button when hovering over the modal content area */
+.video-modal-content:hover .close-modal-btn {
+    opacity: 1;
+}
+
+/* Image Modal Styles */
+.image-modal {
+    /* display: none; // Controlled by JS */
+    position: fixed; /* Stay in place */
+    z-index: 1002; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Allow scroll if needed, e.g., small screens */
+    background-color: transparent; /* 透明背景 */
+    /* Use flex for centering the content container */
+    display: none; /* Initially hidden, JS will change to flex */
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Padding around the content */
+    box-sizing: border-box;
+}
+.image-modal-content {
+    position: relative;
+    /* max-width: 100%; */ /* Removed */
+    /* max-height: 100%; */ /* Removed */
+    line-height: 0; /* Prevent extra space */
+    /* overflow: hidden; */ /* Removed: Let image scale instead of clipping */
+}
+#modal-image { /* Style for the image inside the modal */
+    display: block;
+    /* Image should not exceed the size of its container (.image-modal-content) */
+    /* max-width: 100%; */ /* Replaced with viewport-based calc */
+    /* max-height: 100%; */ /* Replaced with viewport-based calc */
+    /* Constrain image size based on viewport minus modal padding */
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+    width: auto;   /* Maintain aspect ratio */
+    height: auto;  /* Maintain aspect ratio */
+    margin: 0 auto; /* Center image if needed */
+    border-radius: 4px;
+}
+.close-image-modal-btn {
+    position: absolute;
+    /* Position relative to the image container (.image-modal-content) */
+    top: 10px; /* Adjust top offset */
+    right: 10px; /* Adjust right offset */
+    color: #ffffff; /* Keep white color */
+    font-size: 30px; /* Slightly smaller maybe? */
+    font-weight: bold;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+    /* text-shadow: 0 1px 3px rgba(0,0,0,0.5); */ /* Removed text shadow */
+    z-index: 1003; /* Ensure button is above image */
+    background-color: rgba(0, 0, 0, 0.4); /* Add background like video button */
+    border-radius: 50%; /* Make it round */
+    padding: 2px 8px; /* Adjust padding for round button */
+    opacity: 0; /* Restore default hidden state */
+}
+.close-image-modal-btn:hover,
+.close-image-modal-btn:focus {
+    /* color: #bbb; */ /* Using background hover instead */
+    background-color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    opacity: 1; /* Restore hover visibility */
+}
+/* Show close button when hovering over the modal content area */
+/* Restore hover effect */
+.image-modal-content:hover .close-image-modal-btn {
+    opacity: 1;
+}

@@ -5,382 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>忋境空间 (YJing) - 您的 visionOS 空间媒体管家</title>
     <link rel="icon" type="image/svg+xml" href="images/logo/icon.svg">
-    <style>
-        :root {
-            --primary-color: #007AFF; /* Apple Blue */
-            --secondary-color: #f2f2f7; /* Light Gray */
-            --text-color: #1d1d1f; /* Near Black */
-            --light-text-color: #6e6e73; /* Gray */
-            --background-color: #ffffff; /* White */
-            --border-radius: 12px;
-            --section-padding: 60px 20px;
-            --container-width: 960px;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 15px 0;
-            border-bottom: 1px solid #e5e5e5;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 25px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            /* background-color: var(--secondary-color); */ /* Comment out or remove original background */
-            border-bottom: 1px solid #e5e5e5;
-            background-image: url('images/bg/bg.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: relative; /* Add position relative for potential overlay */
-        }
-        .hero::before { /* Optional: Add a semi-transparent overlay for better text readability */
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* background-color: rgba(242, 242, 247, 0.6); */ /* Use secondary color with alpha */
-            background-color: rgba(0, 0, 0, 0.4); /* Darker overlay */
-            z-index: 1;
-        }
-        .hero .container { /* Ensure content is above the overlay */
-            position: relative;
-            z-index: 2;
-        }
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: #ffffff; /* Change text color to white */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Add text shadow */
-            /* Consider adding text shadow for better contrast if overlay is not used */
-            /* text-shadow: 0 1px 3px rgba(0,0,0,0.4); */
-        }
-        .hero p {
-            font-size: 1.2em;
-            /* color: var(--light-text-color); */ /* Adjust text color for contrast */
-            /* color: var(--text-color); */ /* Or a darker color */
-            color: #ffffff; /* Change text color to white */
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Add text shadow */
-             /* text-shadow: 0 1px 2px rgba(0,0,0,0.3); */
-        }
-        .hero img {
-            max-width: 80%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin: 5px; /* Add margin for spacing */
-        }
-        .cta-button:hover {
-            background-color: #005bb5;
-        }
-        .cta-button.secondary { /* Style for the new button */
-            background-color: rgba(255, 255, 255, 0.8);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-        .cta-button.secondary:hover {
-            background-color: white;
-        }
-        .section {
-            padding: var(--section-padding);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 50px;
-            font-weight: 600;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-        .feature-item {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-        }
-        .feature-item img { /* Placeholder for icons or feature images */
-            height: 60px;
-            width: auto;
-        }
-         .feature-item h3 {
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .feature-item p {
-            color: var(--light-text-color);
-            font-size: 0.95em;
-        }
-
-        .detailed-feature {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        .detailed-feature:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        .detailed-feature-text {
-            flex: 1;
-        }
-        .detailed-feature-text h3 {
-             font-size: 1.8em;
-             margin-bottom: 15px;
-             font-weight: 600;
-        }
-        .detailed-feature-text p, .detailed-feature-text ul {
-            color: var(--light-text-color);
-            font-size: 1em;
-        }
-         .detailed-feature-text ul {
-            padding-left: 20px;
-            list-style: disc;
-         }
-        .detailed-feature-image {
-            flex: 1;
-            text-align: center;
-        }
-        .detailed-feature-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .gallery {
-            background-color: var(--secondary-color);
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-         .gallery-item img:hover {
-             transform: scale(1.05);
-             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-         }
-
-        footer {
-            background-color: var(--text-color);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-        }
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1.1em; }
-            .section-title { font-size: 2em; }
-            .detailed-feature, .detailed-feature:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
-            }
-             .detailed-feature-image { margin-top: 30px; }
-            header .container { flex-direction: column; }
-            nav ul { margin-top: 10px; }
-            nav ul li { margin: 0 10px; }
-        }
-        @media (max-width: 480px) {
-             .hero h1 { font-size: 2em; }
-             .hero p { font-size: 1em; }
-             .section-title { font-size: 1.8em; }
-             nav ul { flex-wrap: wrap; justify-content: center; }
-             nav ul li { margin: 5px 10px; }
-        }
-
-        /* Video Modal Styles */
-        .video-modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1001; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-            align-items: center; /* Vertical center */
-            justify-content: center; /* Horizontal center */
-        }
-        .video-modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 80%;
-            max-width: 800px; /* Limit maximum width */
-            background-color: #000; /* Black background for video area */
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        }
-         .video-modal-content video {
-            display: block; /* Remove extra space below video */
-            width: 100%;
-            height: auto;
-         }
-        .close-modal-btn {
-            position: absolute;
-            top: 10px; /* Position inside top */
-            right: 10px; /* Position inside right */
-            color: #ffffff; /* White color for visibility */
-            font-size: 24px; /* Adjusted size */
-            font-weight: bold;
-            transition: opacity 0.3s ease; /* Transition for opacity */
-            cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            border: none;
-            line-height: 1; /* Adjust line height */
-            padding: 5px 10px; /* Add padding */
-            border-radius: 50%; /* Make it round */
-            opacity: 0; /* Hidden by default */
-            z-index: 10; /* Ensure it's above the video element if needed */
-        }
-        .close-modal-btn:hover,
-        .close-modal-btn:focus {
-            background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
-            text-decoration: none;
-        }
-        /* Show close button when hovering over the modal content area */
-        .video-modal-content:hover .close-modal-btn {
-            opacity: 1;
-        }
-
-        /* Image Modal Styles */
-        .image-modal {
-            /* display: none; // Controlled by JS */
-            position: fixed; /* Stay in place */
-            z-index: 1002; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Allow scroll if needed, e.g., small screens */
-            background-color: transparent; /* 透明背景 */
-            /* Use flex for centering the content container */
-            display: none; /* Initially hidden, JS will change to flex */
-            align-items: center;
-            justify-content: center;
-            padding: 20px; /* Padding around the content */
-            box-sizing: border-box;
-        }
-        .image-modal-content {
-            position: relative;
-            /* Constrain this container to the available space in the flex parent */
-            max-width: 100%;
-            max-height: 100%;
-            line-height: 0; /* Prevent extra space */
-            /* It might be useful to let this container shrink if the image is small */
-            /* display: inline-block; /* Or similar, if needed */
-            overflow: hidden; /* Crucial: Prevent image from visually overflowing this box */
-        }
-        #modal-image { /* Style for the image inside the modal */
-            display: block;
-            /* Image should not exceed the size of its container (.image-modal-content) */
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;   /* Maintain aspect ratio */
-            height: auto;  /* Maintain aspect ratio */
-            margin: 0 auto; /* Center image if needed */
-            border-radius: 4px;
-        }
-        .close-image-modal-btn {
-            position: absolute;
-            /* Position relative to viewport edges, considering modal padding */
-            top: 25px; /* Adjust slightly due to padding */
-            right: 35px; /* Adjust slightly due to padding */
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            line-height: 1;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            z-index: 1003; /* Ensure button is above image */
-        }
-        .close-image-modal-btn:hover,
-        .close-image-modal-btn:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -396,6 +21,7 @@
                     <li><a href="#details">功能详情</a></li>
                     <li><a href="#gallery">应用截图</a></li>
                     <li><a href="#download">立即下载</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
             </nav>
         </div>
@@ -538,11 +164,35 @@
          </div>
     </section>
 
+    <section id="contact" class="section">
+        <div class="container">
+            <!-- Card Container -->
+            <div style="background-color: var(--secondary-color); padding: 40px; border-radius: var(--border-radius); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-align: center;">
+                <h2 class="section-title" style="margin-top: 0; margin-bottom: 20px;">联系我们</h2>
+                <p style="color: var(--light-text-color); margin-bottom: 40px;">如果您有任何问题、建议或合作意向，欢迎通过以下方式联系我们：</p>
+                <!-- Centered Stacked Layout within Card -->
+                <div style="text-align: center;">
+                    <p style="font-size: 1.1em; margin-bottom: 15px;">
+                        <span style="margin-right: 8px; font-size: 1.2em; vertical-align: middle;">✉️</span> 
+                        <strong>邮箱:</strong> <a href="mailto:boluobn@gmail.com" style="color: var(--primary-color); text-decoration: none; vertical-align: middle;">boluobn@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.1em; margin-bottom: 25px;">
+                         <span style="margin-right: 8px; font-size: 1.2em; vertical-align: middle;">💬</span>
+                        <strong style="vertical-align: middle;">微信:</strong> <span style="vertical-align: middle;">boluobn</span>
+                    </p> 
+                    <div>
+                        <p style="margin-bottom: 10px;"><strong>微信扫码添加:</strong></p>
+                        <img src="images/other/qrcode.png" alt="微信二维码" style="max-width: 150px; height: auto; border-radius: var(--border-radius); /* Removed card-like shadow from image as the parent has shadow now */">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <!-- **** 替换为您的版权信息 **** -->
-            <p>&copy; 2024 boluobn. 保留所有权利。</p>
+            <p>&copy; 2025 boluobn. 保留所有权利。</p>
         </div>
     </footer>
 
@@ -559,79 +209,13 @@
 
     <!-- Image Modal Structure -->
     <div id="image-modal" class="image-modal">
-      <span class="close-image-modal-btn" id="close-image-modal">&times;</span>
       <div class="image-modal-content">
+         <span class="close-image-modal-btn" id="close-image-modal">&times;</span>
          <img id="modal-image" src="" alt="放大图片">
       </div>
     </div>
 
-    <script>
-        // Video Modal Logic
-        const videoModal = document.getElementById("video-modal");
-        const openVideoBtn = document.getElementById("watch-video-btn");
-        const closeVideoBtn = document.getElementById("close-modal-btn");
-        const videoPlayer = document.getElementById("modal-video");
-
-        if (openVideoBtn) {
-            openVideoBtn.onclick = function(event) {
-              event.preventDefault(); // Prevent default anchor behavior
-              videoModal.style.display = "flex"; // Use flex to center content
-              videoPlayer.play(); // Autoplay video
-            }
-        }
-
-        if (closeVideoBtn) {
-            closeVideoBtn.onclick = function() {
-              videoModal.style.display = "none";
-              videoPlayer.pause();
-              videoPlayer.currentTime = 0; // Reset video
-            }
-        }
-
-        if (videoModal) {
-            // When the user clicks anywhere outside of the modal content, close it
-            videoModal.onclick = function(event) {
-              // Check if the click is directly on the modal backdrop (not the content)
-              if (event.target == videoModal) {
-                videoModal.style.display = "none";
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0; // Reset video
-              }
-            }
-        }
-
-        // Image Modal Logic
-        const imageModal = document.getElementById("image-modal");
-        const modalImage = document.getElementById("modal-image");
-        const closeImageBtn = document.getElementById("close-image-modal");
-        const galleryImages = document.querySelectorAll(".gallery-image"); // Use the class added to gallery images
-
-        galleryImages.forEach(img => {
-            img.onclick = function() {
-                imageModal.style.display = "flex"; // Show the modal (using flex like video)
-                modalImage.src = this.src; // Set the src for the modal image
-                modalImage.alt = this.alt; // Optionally copy alt text
-            }
-        });
-
-        if (closeImageBtn) {
-            closeImageBtn.onclick = function() {
-                imageModal.style.display = "none";
-                modalImage.src = ""; // Clear src when closing
-            }
-        }
-
-        if (imageModal) {
-            // Close the modal if the user clicks on the backdrop
-            imageModal.onclick = function(event) {
-                if (event.target == imageModal) {
-                    imageModal.style.display = "none";
-                    modalImage.src = ""; // Clear src when closing
-                }
-            }
-        }
-
-    </script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
