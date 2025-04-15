@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YJing - A spatial media browser designed for visionOS, featuring an immersive photo wall, local management, convenient import, multi-level directories, waterfall favorites, and privacy protection. Manage and relive your photos and videos in a new spatial dimension.">
+    <meta name="keywords" content="YJing, visionOS, spatial media, spatial photos, spatial videos, Apple Vision Pro, photo management, video management, immersive experience, photo wall, local storage, privacy protection, App Store">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yjing.xin">
+    <meta property="og:title" content="YJing - Your visionOS Spatial Media Manager">
+    <meta property="og:description" content="The core application for exploring and managing personal photos and videos on visionOS. Relive every touching moment in a completely new spatial dimension.">
+    <meta property="og:image" content="https://www.yjing.xin/images/en/screenshot6.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yjing.xin">
+    <meta property="twitter:title" content="YJing - Your visionOS Spatial Media Manager">
+    <meta property="twitter:description" content="The core application for exploring and managing personal photos and videos on visionOS. Relive every touching moment in a completely new spatial dimension.">
+    <meta property="twitter:image" content="https://www.yjing.xin/images/en/screenshot6.jpg">
+
+    <title>YJing - Your visionOS Spatial Media Manager</title>
+    <link rel="icon" type="image/svg+xml" href="images/logo/icon.svg">
+
+    <!-- Preload the hero background image -->
+    <link rel="preload" href="images/bg/bg.jpg" as="image">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo/icon.svg" alt="YJing Logo" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+                <span style="vertical-align: middle;">YJing</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Core Features</a></li>
+                    <li><a href="#details">Feature Details</a></li>
+                    <li><a href="#gallery">App Screenshots</a></li>
+                    <li><a href="#download">Download Now</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>YJing</h1>
+            <p>The core application for exploring and managing personal photos and videos on visionOS. Relive every touching moment in a completely new spatial dimension.</p>
+            <a href="https://apps.apple.com/us/app/yjing/id6743648639" class="cta-button">Go to App Store</a>
+            <a href="#" id="watch-video-btn" class="cta-button secondary">Watch Video</a>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <img src="images/feature/photowall.png" alt="Photo Wall Icon">
+                    <h3>Immersive Photo Wall</h3>
+                    <p>Images surround you, interact naturally with gestures, browse in groups, rotate freely, offering an unprecedented visual feast.</p>
+                </div>
+                <div class="feature-item">
+                     <img src="images/feature/local.png" alt="Local Management Icon">
+                    <h3>Local Media Management</h3>
+                    <p>All spatial media files are securely stored on your local device, supporting offline access and management, keeping data in your control.</p>
+                </div>
+                <div class="feature-item">
+                     <img src="images/feature/import.png" alt="Import Icon">
+                    <h3>Convenient Import</h3>
+                    <p>Quickly import spatial photos and videos from the system "Photos" app, easily syncing your precious memories.</p>
+                </div>
+                 <div class="feature-item">
+                     <img src="images/feature/folder.png" alt="Directory Icon">
+                    <h3>Multi-level Directory Management</h3>
+                    <p>Freely create, name, and move multi-level directories to efficiently categorize and find your photo and video content.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/feature/fav.png" alt="Favorites Icon">
+                    <h3>Waterfall Favorites</h3>
+                    <p>One-click favorite content, displayed in an immersive waterfall layout with adjustable thumbnail sizes for easier browsing.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/feature/lock.png" alt="Privacy Icon">
+                    <h3>Privacy Security Guard</h3>
+                    <p>Supports setting an access password and enabling Optic ID, fully protecting your personal privacy for secure storage of beautiful memories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="section">
+         <div class="container">
+            <h2 class="section-title">Feature Details</h2>
+
+            <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>Photo Wall Mode: A New Spatial Interaction Experience</h3>
+                    <ul>
+                        <li>Click the red button on the toolbar to instantly enter the immersive photo wall space.</li>
+                        <li>Supports photo and video display; single-click to zoom, double-click to play/pause video.</li>
+                        <li>Browse by group, set the number per group and random display, switch freely.</li>
+                        <li>Photo wall and sky sphere support manual drag rotation or auto-rotation.</li>
+                        <li>Click to enlarge photos during rotation, configurable whether to stop rotation when enlarged.</li>
+                    </ul>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <video controls loop playsinline width="100%" height="auto" style="border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);">
+                          <source src="videos/en/YJing.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                 </div>
+            </div>
+
+             <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>Powerful Media File Management</h3>
+                     <ul>
+                        <li><strong>Directory Management:</strong> Create, rename, copy, move, and delete multi-level directories.</li>
+                        <li><strong>Import Function:</strong> Quickly import spatial media from the Photos app.</li>
+                        <li><strong>File Operations:</strong> Supports moving, copying, renaming, and deleting files and directories.</li>
+                    </ul>
+                    <p>Keep your media library organized and easily find content.</p>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <img src="images/en/screenshot2.jpg" alt="File Management Interface">
+                 </div>
+            </div>
+
+            <div class="detailed-feature">
+                 <div class="detailed-feature-text">
+                    <h3>Favorites Management & Preview</h3>
+                    <ul>
+                        <li>One-click favorite photos and videos for centralized management.</li>
+                        <li>Favorites use a waterfall layout for a great visual effect, supporting drag-to-adjust thumbnail size.</li>
+                        <li>Compatible with all spatial media formats within the Photos app.</li>
+                        <li>Use arrow keys during preview to smoothly switch between previous/next files.</li>
+                    </ul>
+                 </div>
+                 <div class="detailed-feature-image">
+                      <img src="images/en/screenshot3.jpg" alt="Favorites and Preview">
+                 </div>
+            </div>
+
+         </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">App Screenshots</h2>
+            <p style="text-align: center; color: var(--light-text-color); margin-top:-30px; margin-bottom: 40px;">Visually experience the immersive journey offered by "YJing"</p>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/en/screenshot1.jpg" alt="YJing Screenshot 1" class="gallery-image"></div>
+                <div class="gallery-item"><img src="images/en/screenshot6.jpg" alt="YJing Screenshot 2" class="gallery-image"></div>
+                <div class="gallery-item"><img src="images/en/screenshot2.jpg" alt="YJing Screenshot 3" class="gallery-image"></div>
+                <div class="gallery-item"><img src="images/en/screenshot3.jpg" alt="YJing Screenshot 4" class="gallery-image"></div>
+                <div class="gallery-item"><img src="images/en/screenshot4.jpg" alt="YJing Screenshot 5" class="gallery-image"></div>
+                <div class="gallery-item"><img src="images/en/screenshot5.jpg" alt="YJing Screenshot 6" class="gallery-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section" style="text-align: center;">
+         <div class="container">
+              <h2 class="section-title">Experience Now</h2>
+              <p style="color: var(--light-text-color); margin-bottom: 30px;">Download "YJing" now and start a new journey of spatial media management on visionOS.</p>
+              <a href="https://apps.apple.com/us/app/yjing/id6743648639" class="cta-button">Download on the App Store</a>
+              <br><br>
+         </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div style="background-color: var(--secondary-color); padding: 40px; border-radius: var(--border-radius); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-align: center;">
+                <h2 class="section-title" style="margin-top: 0; margin-bottom: 20px;">Contact Us</h2>
+                <p style="color: var(--light-text-color); margin-bottom: 40px;">If you have any questions, suggestions, or collaboration inquiries, please contact us via:</p>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.1em; margin-bottom: 15px;">
+                        <span style="margin-right: 8px; font-size: 1.2em; vertical-align: middle;">✉️</span>
+                        <strong>Email:</strong> <a href="mailto:boluobn@gmail.com" style="color: var(--primary-color); text-decoration: none; vertical-align: middle;">boluobn@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.1em; margin-bottom: 25px;">
+                         <span style="margin-right: 8px; font-size: 1.2em; vertical-align: middle;">💬</span>
+                        <strong style="vertical-align: middle;">WeChat:</strong> <span style="vertical-align: middle;">boluobn</span>
+                    </p>
+                    <div>
+                        <p style="margin-bottom: 10px;"><strong>Scan WeChat QR Code to Add:</strong></p>
+                        <img src="images/other/qrcode.png" alt="WeChat QR Code" style="max-width: 150px; height: auto; border-radius: var(--border-radius);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 boluobn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal Structure -->
+    <div id="video-modal" class="video-modal">
+      <div class="video-modal-content">
+        <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+        <video id="modal-video" controls playsinline>
+           <source src="videos/en/YJing.mp4" type="video/mp4">
+           Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Image Modal Structure -->
+    <div id="image-modal" class="image-modal">
+      <div class="image-modal-content">
+         <span class="close-image-modal-btn" id="close-image-modal">&times;</span>
+         <img id="modal-image" src="" alt="Enlarged Image">
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
