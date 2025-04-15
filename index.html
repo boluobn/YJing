@@ -27,6 +27,28 @@
     <link rel="preload" href="images/bg/bg.jpg" as="image">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Language Detection/Redirection Script -->
+    <script>
+      (function() {
+        try {
+          const userLangPref = localStorage.getItem('userPreferredLang');
+          const browserLang = navigator.language || navigator.userLanguage; // Get browser language
+          const isEnglishBrowser = browserLang && browserLang.toLowerCase().startsWith('en');
+          const onChinesePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
+
+          if (onChinesePage) {
+            // Redirect if preference is English OR (no preference AND browser is English)
+            if (userLangPref === 'en' || (!userLangPref && isEnglishBrowser)) {
+              window.location.replace('index-en.html'); // Use replace to avoid back button issues
+            }
+          }
+        } catch (e) {
+          console.error("Error accessing localStorage or redirecting:", e);
+          // Fallback or do nothing if localStorage is unavailable
+        }
+      })();
+    </script>
 </head>
 <body>
 

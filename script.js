@@ -64,11 +64,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Language Switcher Logic (Optional - CSS handles hover)
-    // You can add click/touch event handling here if needed for mobile/touch devices
+    // Language Switcher Logic
     const langSwitcher = document.querySelector('.language-switcher');
     if (langSwitcher) {
-        // Example: Add a class on click (if you wanted click instead of hover)
+        const dropdownLinks = langSwitcher.querySelectorAll('.dropdown-menu a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const selectedLang = this.getAttribute('href').includes('index-en.html') ? 'en' : 'zh';
+                try {
+                    localStorage.setItem('userPreferredLang', selectedLang);
+                } catch (error) {
+                    console.error("Error saving language preference to localStorage:", error);
+                    // Proceed with navigation even if localStorage fails
+                }
+                // Allow the default link navigation to proceed
+            });
+        });
+
+        // The commented-out section below is for click-to-open functionality (alternative to hover)
         /*
         const langLink = langSwitcher.querySelector('a');
         const dropdown = langSwitcher.querySelector('.dropdown-menu');
