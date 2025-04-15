@@ -59,6 +59,74 @@ nav ul li a {
 nav ul li a:hover {
     color: var(--primary-color);
 }
+
+/* Language Switcher Styles */
+.language-switcher {
+    position: relative; /* Needed for absolute positioning of dropdown */
+}
+
+.language-switcher > a {
+    display: flex; /* Align text and arrow */
+    align-items: center;
+}
+
+.arrow-down {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--text-color); /* Arrow color */
+    transition: transform 0.3s ease;
+}
+
+.language-switcher:hover .arrow-down {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the nav item */
+    left: 50%;
+    transform: translateX(-50%); /* Center the dropdown */
+    background-color: var(--background-color);
+    border: 1px solid #e5e5e5;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin: 0; /* Set margin to 0 to remove gap */
+    min-width: 120px; /* Minimum width */
+    z-index: 1001; /* Ensure it's above other header content */
+}
+
+.language-switcher:hover .dropdown-menu,
+.language-switcher .dropdown-menu.show { /* Show on hover or when 'show' class is added */
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 8px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    white-space: nowrap; /* Prevent wrapping */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+/* End Language Switcher Styles */
+
 .hero {
     text-align: center;
     padding: 100px 20px;

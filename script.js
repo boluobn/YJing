@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', (event) => {
     // Video Modal Logic
     const videoModal = document.getElementById("video-modal");
     const openVideoBtn = document.getElementById("watch-video-btn");
@@ -62,3 +63,26 @@
             }
         }
     }
+
+    // Language Switcher Logic (Optional - CSS handles hover)
+    // You can add click/touch event handling here if needed for mobile/touch devices
+    const langSwitcher = document.querySelector('.language-switcher');
+    if (langSwitcher) {
+        // Example: Add a class on click (if you wanted click instead of hover)
+        /*
+        const langLink = langSwitcher.querySelector('a');
+        const dropdown = langSwitcher.querySelector('.dropdown-menu');
+        langLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('show'); // Toggle a 'show' class
+        });
+        // Optional: Close dropdown if clicking outside
+        document.addEventListener('click', function(e) {
+            if (!langSwitcher.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        */
+    }
+
+}); // Wrap all in DOMContentLoaded
